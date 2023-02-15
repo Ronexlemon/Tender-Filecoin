@@ -1,4 +1,5 @@
 const {ethers} = require("hardhat");
+//TenderFileConContractAddress 0x05198c2783d3497361ca936a70E5643287dfD0B8
 
 async function main(){
     //get the contract
