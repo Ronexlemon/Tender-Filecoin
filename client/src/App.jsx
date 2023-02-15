@@ -5,7 +5,11 @@ import LandingPage from "./pages/LandingPage";
 function App() {
   return (
     <div className="App">
-    <LandingPage/>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
