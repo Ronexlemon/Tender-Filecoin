@@ -1,6 +1,6 @@
 const {ethers} = require("hardhat");
 //TenderFileConContractAddress 0x05198c2783d3497361ca936a70E5643287dfD0B8
-
+//tenderadress
 async function main(){
     //get the contract
     const TenderFileCoinContract = await ethers.getContractFactory("Bider");
