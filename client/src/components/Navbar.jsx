@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <section className="text-white">
-      <nav className="flex justify-between md:justify-around items-center px-3 ">
+      <nav className="flex justify-between md:justify-around items-center px-3 pt-3 ">
         <div className="flex items-center">
           <img src={logo} alt="tender-filecoin-logo" />
           <h3 className="font-bold text-xl ml-2">TenderSpace</h3>
@@ -26,7 +26,7 @@ const Navbar = () => {
         </ul>
 
         <Link to="/register">
-          <button className="hidden md:block rounded-sm border bg-[#252E4D] border-none px-10 py-2 my-2">
+          <button className="hidden md:block rounded-sm border bg-[#252E4D] border-none px-10 py-3 my-2">
             Get Started
           </button>
         </Link>
@@ -45,7 +45,7 @@ const Navbar = () => {
       </nav>
       {/* Mobile Menu */}
       {showMenu ? (
-        <ul className="absolute flex flex-col md:hidden h-screen w-screen ">
+        <ul className="absolute flex flex-col md:hidden h-screen w-screen bg-[#12141D] ">
           <li className="m-3 list-none">Home</li>
           <li className="m-3 list-none">Features</li>
           <li className="m-3 list-none">Contact Us</li>
