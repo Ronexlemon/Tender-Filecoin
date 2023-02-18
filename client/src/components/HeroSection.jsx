@@ -1,6 +1,7 @@
 import BusinessSection from "./BusinessSection";
 import FeatureSection from "./FeatureSection";
 import HeroText from "./HeroText";
+import MapSection from "./MapSection";
 import Navbar from "./Navbar";
 
 const HeroSection = () => {
@@ -10,6 +11,7 @@ const HeroSection = () => {
             <HeroText />
             <FeatureSection />
             <BusinessSection />
+            <MapSection />
         </div>
      );
 }
