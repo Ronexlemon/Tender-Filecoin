@@ -7,6 +7,7 @@ const MapSection = () => {
         Users around the world
       </h1>
       <img src={map} alt="" />
+      <hr className="w-[90%] my-5" />
     </section>
   );
 };

@@ -3,6 +3,7 @@ import FeatureSection from "./FeatureSection";
 import HeroText from "./HeroText";
 import MapSection from "./MapSection";
 import Navbar from "./Navbar";
+import SubscribeSection from "./SubscribeSection";
 
 const HeroSection = () => {
     return ( 
@@ -12,6 +13,7 @@ const HeroSection = () => {
             <FeatureSection />
             <BusinessSection />
             <MapSection />
+            <SubscribeSection />
         </div>
      );
 }
