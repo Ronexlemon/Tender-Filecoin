@@ -1,3 +1,4 @@
+import BusinessSection from "./BusinessSection";
 import FeatureSection from "./FeatureSection";
 import HeroText from "./HeroText";
 import Navbar from "./Navbar";
@@ -8,6 +9,7 @@ const HeroSection = () => {
             <Navbar />
             <HeroText />
             <FeatureSection />
+            <BusinessSection />
         </div>
      );
 }
