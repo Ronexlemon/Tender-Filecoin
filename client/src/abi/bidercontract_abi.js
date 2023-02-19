@@ -79,6 +79,61 @@ export const BiderAbi = [
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "myTenders",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address payable",
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "companyName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "tenderDescription",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "deadlineDate",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "contactEmail",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tenderAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tendersindex",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct TenderPoster.TenderDetails[]",
+        "name": "tenders",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "uint256",
@@ -126,98 +181,110 @@ export const BiderAbi = [
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_tenderbidsIndex",
-        "type": "uint256"
-      }
-    ],
+    "inputs": [],
     "name": "readBiderDetails",
     "outputs": [
       {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "enum Bider.statuschoices",
-        "name": "",
-        "type": "uint8"
-      },
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
+        "components": [
+          {
+            "internalType": "address payable",
+            "name": "bidowner",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "companyName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "contact",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "goodsDealsWith",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "tenderOwnerName",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "bidsTenderIndex",
+            "type": "uint256"
+          },
+          {
+            "internalType": "enum Bider.statuschoices",
+            "name": "choice",
+            "type": "uint8"
+          },
+          {
+            "internalType": "string",
+            "name": "goodsDescription",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct Bider.biderDetails[]",
+        "name": "tenders",
+        "type": "tuple[]"
       }
     ],
     "stateMutability": "view",
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_tenderIndex",
-        "type": "uint256"
-      }
-    ],
+    "inputs": [],
     "name": "readTenderDetails",
     "outputs": [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
+        "components": [
+          {
+            "internalType": "address payable",
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "companyName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "tenderDescription",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "deadlineDate",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "contactEmail",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tenderAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tendersindex",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct TenderPoster.TenderDetails[]",
+        "name": "tenders",
+        "type": "tuple[]"
       }
     ],
     "stateMutability": "view",
@@ -266,6 +333,115 @@ export const BiderAbi = [
   },
   {
     "inputs": [],
+    "name": "showOnlyApprovedTender",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address payable",
+            "name": "bidowner",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "companyName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "contact",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "goodsDealsWith",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "tenderOwnerName",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "bidsTenderIndex",
+            "type": "uint256"
+          },
+          {
+            "internalType": "enum Bider.statuschoices",
+            "name": "choice",
+            "type": "uint8"
+          },
+          {
+            "internalType": "string",
+            "name": "goodsDescription",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct Bider.biderDetails[]",
+        "name": "tenders",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "tenderItems",
+    "outputs": [
+      {
+        "internalType": "address payable",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "companyName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "tenderDescription",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "deadlineDate",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "contactEmail",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tenderAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tendersindex",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "tenderTotals",
     "outputs": [
       {
@@ -288,6 +464,61 @@ export const BiderAbi = [
     "name": "transferOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "viewBiderTenders",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address payable",
+            "name": "bidowner",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "companyName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "contact",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "goodsDealsWith",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "tenderOwnerName",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "bidsTenderIndex",
+            "type": "uint256"
+          },
+          {
+            "internalType": "enum Bider.statuschoices",
+            "name": "choice",
+            "type": "uint8"
+          },
+          {
+            "internalType": "string",
+            "name": "goodsDescription",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct Bider.biderDetails[]",
+        "name": "tenders",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -338,6 +569,11 @@ export const BiderAbi = [
       {
         "internalType": "string",
         "name": "_contactEmail",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_email",
         "type": "string"
       },
       {

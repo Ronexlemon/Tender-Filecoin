@@ -13,7 +13,7 @@ const BiderForm = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const { id } = state; // Read values passed on state
-  const ContractBiderAddress = "0x8fF171857abe05f4642e90Ec243A9553f0853678"; //"0xb6D6d2e56f6C5E519c871BC682048027171Ba0E1"
+  const ContractBiderAddress = "0xE50A2E68f31e899D6e794314823cD2ac126BD764"; 
   const Web3ModalRef = useRef();
   const [biderCompanyName, setBiderCompanyName] = useState("");
   const [biderCompanyRegistrationNumber, setBiderCompanyRegistrationNumber] =
@@ -28,9 +28,9 @@ const BiderForm = () => {
     const web3Provider = new providers.Web3Provider(provider);
     // check if network is Mumbai
     const { chainId } = await web3Provider.getNetwork();
-    if (chainId !== 80001) {
-      window.alert("Change network to Mumbai");
-      throw new Error("Change network To Mumbai");
+    if (chainId !== 3141) {
+      window.alert("Change network to HyperSpace fileCoin");
+      throw new Error("Change network To HyperSpace fileCoin ");
     }
     if (needSigner) {
       const signer = web3Provider.getSigner();
@@ -42,7 +42,7 @@ const BiderForm = () => {
   //call the metamask on page reload
   useEffect(() => {
     Web3ModalRef.current = new Web3Modal({
-      network: "Mumbai",
+      network: "hyperspace",
       providerOptions: {},
       disableInjectedProvider: false,
       cacheProvider: false,

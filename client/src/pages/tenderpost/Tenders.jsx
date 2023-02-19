@@ -15,7 +15,7 @@ const Tenders = () => {
   let btnapprove = useRef(null);
   //let Tenders =[];
   const [Tenders, setTenders] = useState([]);
-  const TenderOwnerAddress = "0x8fF171857abe05f4642e90Ec243A9553f0853678";
+  const TenderOwnerAddress = "0xE50A2E68f31e899D6e794314823cD2ac126BD764";
   const [tenderslength, setLength] = useState(0);
   const web3ModalRef = useRef();
   const [walletconnect, setWalletConnect] = useState(false);
@@ -27,7 +27,7 @@ const Tenders = () => {
   //  document.querySelector(".btnPost")
   //  .addEventListener("click", async (e) =>
   const btnPosts = async () => {
-    const params = [companyName, description, deadline, email, amount];
+    const params = [companyName, description, deadline,contact, email, amount];
 
     try {
       const signer = await getProviderOrSigner(true);
@@ -35,10 +35,12 @@ const Tenders = () => {
       const results = await tenderContract.writeTenderDetails(...params);
       // .send({from: address})
       alert("add results successful");
+      alert(`🎉 You successfully added "${params[0]}".`);
     } catch (error) {
       alert("the error is", error);
+      console.log(error);
     }
-    alert(`🎉 You successfully added "${params[0]}".`);
+    
     // getAllTenders()
   };
 
@@ -55,9 +57,9 @@ const Tenders = () => {
     const web3Provider = new providers.Web3Provider(provider);
     //check if user is connected to Mumbai network
     const { chainId } = await web3Provider.getNetwork();
-    if (chainId !== 80001) {
-      window.alert("Change network to Mumbai");
-      throw new Error("Change network To Mumbai");
+    if (chainId !== 3141) {
+      window.alert("Change network to HyperSpace fileCoin");
+      throw new Error("Change network To HyperSpace fileCoin ");
     }
     // alert("network is Mumbai")
     //if need signer for transactions
