@@ -27,7 +27,7 @@ const Tenders = () => {
   //  document.querySelector(".btnPost")
   //  .addEventListener("click", async (e) =>
   const btnPosts = async () => {
-    const params = [companyName, description, deadline, email, amount];
+    const params = [companyName, description, deadline,contact, email, amount];
 
     try {
       const signer = await getProviderOrSigner(true);
@@ -35,10 +35,12 @@ const Tenders = () => {
       const results = await tenderContract.writeTenderDetails(...params);
       // .send({from: address})
       alert("add results successful");
+      alert(`🎉 You successfully added "${params[0]}".`);
     } catch (error) {
       alert("the error is", error);
+      console.log(error);
     }
-    alert(`🎉 You successfully added "${params[0]}".`);
+    
     // getAllTenders()
   };
 
