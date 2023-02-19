@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Banner from "../../components/Banner";
+// address payable bidowner;
+// string companyName;
+// string contact;
+// string goodsDealsWith;
+// string tenderOwnerName;
+// uint bidsTenderIndex;
+// statuschoices choice;
+// string goodsDescription;
 
 const DisplayTenderAllocation = (props) => {
   useEffect(() => {
@@ -27,17 +35,17 @@ const DisplayTenderAllocation = (props) => {
           <tbody className="text-[#130026]  text-sm font-light">
             {props.bids.map((tender, index) => (
               <>
-                {tender.choice === 1 ? (
+                {tender.choice == 1 ? (
                   <>
                     <tr
-                      key={tender.bidIndex}
+                      key={index}
                       className="border-b border-gray-200 hover:bg-gray-100"
                     >
                       <td className="py-3 px-2 text-left whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="mr-2"></div>
                           <span className="font-medium font-josefin">
-                            {tender.companyNames}
+                            {tender.companyName}
                           </span>
                         </div>
                       </td>
@@ -45,7 +53,7 @@ const DisplayTenderAllocation = (props) => {
                         <div className="flex items-center">
                           <div className="mr-2"></div>
                           <span className="font-josefin font-normal">
-                            {tender.contactAddress}
+                            {tender.contact}
                           </span>
                         </div>
                       </td>
@@ -53,7 +61,7 @@ const DisplayTenderAllocation = (props) => {
                         <div className="flex items-center">
                           <div className="mr-2"></div>
                           <span className="font-josefin font-normal">
-                            {tender.tenderDescription}
+                            {tender.goodsDescription}
                           </span>
                         </div>
                       </td>
@@ -62,7 +70,7 @@ const DisplayTenderAllocation = (props) => {
                         <div className="flex items-center">
                           <div className="mr-2"></div>
                           <span className="font-josefin font-normal">
-                            {tender.companyOfferTender}
+                            {tender.tenderOwnerName}
                           </span>
                         </div>
                       </td>
