@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Banner from "../../components/Banner";
-
+// / address payable owner;
+// string companyName;
+// string tenderDescription;
+// string deadlineDate;
+// string contactEmail;
+// string email;
+// uint tenderAmount;
+// uint tendersindex;
 
 const DisplayTenders = (props) => {
   useEffect(() => {
@@ -33,14 +40,14 @@ const DisplayTenders = (props) => {
               {props.tenders.map((tender, index) => (
                 <>
                   <tr
-                    key={tender.tenderindexs}
+                    key={index}
                     className="border-b border-gray-200  hover:bg-gray-100"
                   >
                     <td className="py-3 px-2 text-left whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="mr-2"></div>
                         <span className="font-medium font-josefin">
-                          {tender.companyNames}
+                          {tender.companyName}
                         </span>
                       </div>
                     </td>
@@ -48,7 +55,7 @@ const DisplayTenders = (props) => {
                       <div className="flex items-center">
                         <div className="mr-2"></div>
                         <span className="font-josefin font-normal">
-                          {tender.contactEmails}
+                          {tender.email}
                         </span>
                       </div>
                     </td>
@@ -56,7 +63,7 @@ const DisplayTenders = (props) => {
                       <div className="flex items-center">
                         <div className="mr-2"></div>
                         <span className="font-josefin font-normal">
-                          0712345678
+                        {tender.contactEmail}
                         </span>
                       </div>
                     </td>
@@ -64,7 +71,7 @@ const DisplayTenders = (props) => {
                       <div className="flex items-center">
                         <div className="mr-2"></div>
                         <span className="font-josefin font-normal">
-                          {tender.tenderDescriptions}
+                          {tender.tenderDescription}
                         </span>
                       </div>
                     </td>
@@ -72,7 +79,7 @@ const DisplayTenders = (props) => {
                       <div className="flex items-center">
                         <div className="mr-2"></div>
                         <span className="font-josefin font-normal">
-                          {tender.deadlineDates}
+                          {tender.deadlineDate}
                         </span>
                       </div>
                     </td>
@@ -80,7 +87,7 @@ const DisplayTenders = (props) => {
                       <div className="flex items-center">
                         <div className="mr-2"></div>
                         <span className="font-josefin font-normal">
-                          {tender.tenderAmounts / 1}
+                          {tender.tenderAmount / 1}
                         </span>
                       </div>
                     </td>
