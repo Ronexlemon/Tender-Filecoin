@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+
 const DisplayBids = (props) => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -27,14 +28,14 @@ const DisplayBids = (props) => {
                 {tender.choice === 0 ? (
                   <>
                     <tr
-                      key={tender.bidIndex}
+                      key={index}
                       className="border-b border-gray-200 hover:bg-gray-100"
                     >
                       <td className="py-3 px-2 text-left whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="mr-2"></div>
                           <span className="font-medium font-josefin">
-                            {tender.companyNames}
+                            {tender.companyName}
                           </span>
                         </div>
                       </td>
@@ -46,7 +47,7 @@ const DisplayBids = (props) => {
                           </b>
                           <a
                             className="font-josefin font-normal pl-2 hover:underline"
-                            href={tender.goodDealsWith}
+                            href={tender.goodsDealsWith}
                             target="_blank"
                           >
                             Link
@@ -56,7 +57,7 @@ const DisplayBids = (props) => {
                       <td className="py-3 px-2 text-left">
                         <div className="flex items-center">
                           <div className="mr-2"></div>
-                          {tender.choice === 0 && (
+                          {tender.choice == 0 && (
                             <p
                               className="py-2 px-5 bg-orange/20 rounded-full font-josefin font-normal"
                               style={{ color: color ? "orange" : "green" }}
