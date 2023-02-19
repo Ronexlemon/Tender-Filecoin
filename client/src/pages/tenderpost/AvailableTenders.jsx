@@ -14,9 +14,10 @@ const AvailableTenders = () => {
   const Approve = () => {
     alert("yooh");
   };
-  //getAllTenders
+  //Todo get all information
   const getAllTenders = useCallback(async () => {
-    let _tenders = [];
+    try {
+      let _tenders = [];
     const provider = await getProviderOrSigner();
     const TenderContracts = new Contract(
       TenderOwnerAddress,
@@ -24,30 +25,50 @@ const AvailableTenders = () => {
       provider
     );
 
-    const tenderLength = await TenderContracts.tenderTotals();
 
-    for (let i = 0; i < tenderLength; i++) {
-      let _tender = new Promise(async (resolve, reject) => {
-        let t = await TenderContracts.readTenderDetails(i);
-        resolve({
-          owners: t[0],
-          companyNames: t[1],
-          tenderDescriptions: t[2],
-          deadlineDates: t[3],
-          contactEmails: t[4],
-          tenderAmounts: t[5],
-          tenderindexs: t[6],
-        });
-        reject(new Error("Will this be ignored?")); // ignored
+      const tenders = await TenderContracts.readTenderDetails();
+      tenders?.forEach((element) => {
+        _tenders.push(element);
       });
-      _tenders.push(_tender);
+      setTenders(_tenders);
+    } catch (error) {
+      console.log(error);
     }
-    const tenderss = await Promise.all(_tenders);
-    setTenders(tenderss);
-    //renderProducts();
-
-    //add function to render tenders
   }, []);
+  // //getAllTenders
+  // const getAllTenders = useCallback(async () => {
+  //   let _tenders = [];
+  //   const provider = await getProviderOrSigner();
+  //   const TenderContracts = new Contract(
+  //     TenderOwnerAddress,
+  //     BiderAbi,
+  //     provider
+  //   );
+
+  //   const tenderLength = await TenderContracts.tenderTotals();
+
+  //   for (let i = 0; i < tenderLength; i++) {
+  //     let _tender = new Promise(async (resolve, reject) => {
+  //       let t = await TenderContracts.readTenderDetails(i);
+  //       resolve({
+  //         owners: t[0],
+  //         companyNames: t[1],
+  //         tenderDescriptions: t[2],
+  //         deadlineDates: t[3],
+  //         contactEmails: t[4],
+  //         tenderAmounts: t[5],
+  //         tenderindexs: t[6],
+  //       });
+  //       reject(new Error("Will this be ignored?")); // ignored
+  //     });
+  //     _tenders.push(_tender);
+  //   }
+  //   const tenderss = await Promise.all(_tenders);
+  //   setTenders(tenderss);
+  //   //renderProducts();
+
+  //   //add function to render tenders
+  // }, []);
   const getProviderOrSigner = async (needSigner = false) => {
     //connect metamask
     const provider = await web3ModalRef.current.connect();
