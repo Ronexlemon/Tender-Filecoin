@@ -1,7 +1,7 @@
 import React from "react";
 import { BiderAbi } from "../../abi/bidercontract_abi";
 import Web3Modal from "web3modal";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState,useCallback } from "react";
 import { providers, Contract } from "ethers";
 import DisplayBids from "./displayBids";
 
@@ -29,37 +29,27 @@ function Approve() {
     }
     return web3Provider;
   };
-
-  //getallbids tenders
-  const getAllBids = async () => {
-    let _bidTenders = [];
+  const getAllBids = useCallback(async () => {
+    try {
+      let _bidTenders = [];
     const provider = await getProviderOrSigner();
     const BidersContract = new Contract(
       ContractBiderAddress,
       BiderAbi,
       provider
     );
-    const totalItemsLength = await BidersContract.getTotalBindsLength();
-    //alert(totalItemsLength);
-    for (let i = 0; i < totalItemsLength; i++) {
-      let _tenderBids = new Promise(async (resolve, reject) => {
-        let bids = await BidersContract.readBiderDetails(i);
-        resolve({
-          companyNames: bids[0],
-          contactAddress: bids[1],
-          goodDealsWith: bids[2],
-          companyOfferTender: bids[3],
-          bidIndex: bids[4],
-          choice: bids[5],
-          goodsdescription: bids[6],
-        });
-        reject("Please Try Again after some Minutes");
+
+
+      const bids = await BidersContract.readBiderDetails();
+      bids?.forEach((element) => {
+        _bidTenders.push(element);
       });
-      _bidTenders.push(_tenderBids);
+      setBidTenders(_bidTenders);
+    } catch (error) {
+      console.log(error);
     }
-    const allbids = await Promise.all(_bidTenders);
-    setBidTenders(allbids);
-  };
+  }, []);
+  
   //Approve function
   const approveTender = async (ids) => {
     const signer = await getProviderOrSigner(true);
