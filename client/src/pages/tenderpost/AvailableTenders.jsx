@@ -8,7 +8,7 @@ import { BiderAbi } from "../../abi/bidercontract_abi";
 
 const AvailableTenders = () => {
   const [Tenders, setTenders] = useState([]);
-  const TenderOwnerAddress = "0x8fF171857abe05f4642e90Ec243A9553f0853678";
+  const TenderOwnerAddress = "0xE50A2E68f31e899D6e794314823cD2ac126BD764";
   const [tenderslength, setLength] = useState(0);
   const web3ModalRef = useRef();
   const Approve = () => {
@@ -54,9 +54,9 @@ const AvailableTenders = () => {
     const web3Provider = new providers.Web3Provider(provider);
     //check if user is connected to Mumbai network
     const { chainId } = await web3Provider.getNetwork();
-    if (chainId !== 80001) {
-      window.alert("Change network to Mumbai");
-      throw new Error("Change network To Mumbai");
+    if (chainId !== 3141) {
+      window.alert("Change network to HyperSpace fileCoin");
+      throw new Error("Change network To HyperSpace fileCoin ");
     }
     // alert("network is Mumbai")
     //if need signer for transactions
