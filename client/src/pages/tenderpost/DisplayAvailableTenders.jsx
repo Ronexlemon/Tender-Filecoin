@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Banner from "../../components/Banner";
-// / address payable owner;
-// string companyName;
-// string tenderDescription;
-// string deadlineDate;
-// string contactEmail;
-// string email;
-// uint tenderAmount;
-// uint tendersindex;
+
 
 const DisplayTenders = (props) => {
   useEffect(() => {
