@@ -13,6 +13,7 @@ contract TenderPoster is Ownable {
         string tenderDescription;
         string deadlineDate;
         string contactEmail;
+        string email;
         uint tenderAmount;
         uint tendersindex;
     }
@@ -25,6 +26,7 @@ contract TenderPoster is Ownable {
         string memory _tenderDescription,
         string memory _deadlineDate,
         string memory _contactEmail,
+        string memory _email,
         uint _tenderAmount
     ) public {
         require(
@@ -37,6 +39,7 @@ contract TenderPoster is Ownable {
         );
         require(bytes(_deadlineDate).length > 0, "please provide the deadline");
         require(bytes(_contactEmail).length > 0, "please provide the Email");
+        require(bytes(_email).length > 0, "please provide the Email");
         require(_tenderAmount > 0, "Amount should not be negative");
         uint _tendersindex = tenderIndex;
         tenderItems[tenderIndex] = TenderDetails(
@@ -45,6 +48,7 @@ contract TenderPoster is Ownable {
             _tenderDescription,
             _deadlineDate,
             _contactEmail,
+            _email,
             _tenderAmount,
             _tendersindex
         );
