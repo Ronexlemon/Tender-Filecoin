@@ -26,10 +26,10 @@ export const links = [
     title: "Users",
     links: [
       {
-        name: "Bidders",
+        name: "My bids",
       },
       {
-        name: "Tenderers",
+        name: "My tenders",
       },
       
     ],
