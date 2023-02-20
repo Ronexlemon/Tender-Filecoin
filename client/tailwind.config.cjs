@@ -2,7 +2,7 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
 
   theme: {
-<<<<<<< HEAD
+
     extend: {},
     screens: {
       xxs: "320px",
@@ -29,17 +29,6 @@ module.exports = {
       "3xl": "2560px",
       // => @media (min-width: 2560px) { ... }
     },
-    // colors: {
-    //   "primary-color": "#1F1C9B",
-    //   "secondary-color": "#FE873F",
-    //   "secondary-darker": "#061835",
-    //   white: "#fff",
-    //   green: "#17A625",
-    //   orange: "#FFA500",
-    //   gray: "#dddddd",
-    //   "light-purple": "#EFEFFF",
-    // },
-=======
     extend: {
       fontSize: {
         14: "14px",
@@ -77,7 +66,7 @@ module.exports = {
         "bannerImg": "url('https://res.cloudinary.com/dqab6gg7d/image/upload/v1676625544/bg/Promotional_Banner_1_fitwnt.svg')",
       },
     },
->>>>>>> d451035 (refactor: refactor app UI)
+
   },
   plugins: [],
 };
