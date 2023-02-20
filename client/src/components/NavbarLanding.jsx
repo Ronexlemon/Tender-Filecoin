@@ -25,7 +25,7 @@ const NavbarLanding = () => {
           <li className="mx-8 list-none">Contact Us</li>
         </ul>
 
-        <Link to="/register">
+        <Link to="/AvailableTenders">
           <button className="hidden md:block rounded-sm border bg-[#252E4D] border-none px-10 py-3 my-2">
             Get Started
           </button>

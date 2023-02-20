@@ -1,90 +1,89 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { BiderAbi } from "../../abi/bidercontract_abi";
+import Web3Modal from "web3modal";
+import { useRef, useEffect, useState } from "react";
+import { providers, Contract } from "ethers";
+import DisplayTenderStatus from "./DisplayTenderStatus";
 
-const TenderStatus = (props) => {
+
+function TenderStatus() {
+  const [walletconnect, setWalletConnect] = useState(false);
+  const [BidTenders, setBidTenders] = useState([]);
+  const [index, setIndex] = useState();
+  const ContractBiderAddress = "0xE50A2E68f31e899D6e794314823cD2ac126BD764";
+  const Web3ModalRef = useRef();
+  //provide sugner or provider
+  const getProviderOrSigner = async (needSigner = false) => {
+    const provider = await Web3ModalRef.current.connect();
+    const web3Provider = new providers.Web3Provider(provider);
+    // check if network is Mumbai
+    const { chainId } = await web3Provider.getNetwork();
+    if (chainId !== 3141) {
+      window.alert("Change network to HyperSpace fileCoin");
+      throw new Error("Change network To HyperSpace fileCoin ");
+    }
+
+    if (needSigner) {
+      const signer = web3Provider.getSigner();
+      return signer;
+    }
+    return web3Provider;
+  };
+
+
+   const getAllBids = useCallback(async () => {
+     try {
+       let _bidTenders = [];
+       const provider = await getProviderOrSigner();
+       const BidersContract = new Contract(
+         ContractBiderAddress,
+         BiderAbi,
+         provider
+       );
+
+       const bids = await BidersContract.readBiderDetails();
+       bids?.forEach((element) => {
+         _bidTenders.push(element);
+       });
+       setBidTenders(_bidTenders);
+     } catch (error) {
+       console.log(error);
+     }
+   }, []);
+
+
+
+  //Approve function
+  const approveTender = async (ids) => {
+    const signer = await getProviderOrSigner(true);
+
+    const BiderContract = new Contract(ContractBiderAddress, BiderAbi, signer);
+    const approves = await BiderContract.approveTender(ids);
+    // alert(approves);
+  };
+
+  //call the metamask on page reload
+  // useEffect(()=>{
+  //   getAllBids();
+  // },[])
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, []);
-
-  const [color, setColor] = useState(true);
+    Web3ModalRef.current = new Web3Modal({
+      network: "hyperspace",
+      providerOptions: {},
+      disableInjectedProvider: false,
+      cacheProvider: false,
+    });
+    getAllBids();
+  }, [walletconnect]);
 
   return (
-    <div className="w-10/12 mx-auto my-10">
-      <h1 className="text-3xl font-extrabold">Tender Status</h1>
-
-      <table className="min-w-max w-full table-auto my-10">
-        <thead>
-          <tr className="bg-primary-color/60 text-white font-jakarta uppercase text-sm leading-normal">
-            <th className="py-3 px-6 text-left font-josefin">Bidder</th>
-            <th className="py-3 px-6 text-left">Goods or Service</th>
-            <th className="py-3 px-6 text-left">Tenderee</th>
-            <th className="py-3 px-6 text-left">Status</th>
-          </tr>
-        </thead>
-        <tbody className="text-[#130026]  text-sm font-light">
-          {props.bids.map((tender, index) => (
-            <>
-              <tr
-                key={index}
-                className="border-b border-gray-200 hover:bg-gray-100"
-              >
-                <td className="py-3 px-2 text-left whitespace-nowrap">
-                  <div className="flex items-center">
-                    <div className="mr-2"></div>
-                    <span className="font-medium font-josefin">
-                      {tender.companyNames}
-                    </span>
-                  </div>
-                </td>
-                <td className="py-3 px-2 text-left ">
-                  <div className="flex items-center">
-                    <div className="mr-2"></div>
-                    <span className="font-bold font-josefin mr-2">
-                      Document:{" "}
-                    </span>
-                    <a
-                      className="font-josefin"
-                      href={tender.goodDealsWith}
-                      target="_blank"
-                    >
-                      Link
-                    </a>
-                  </div>
-                </td>
-                <td className="py-3 px-2 text-left">
-                  <div className="flex items-center">
-                    <div className="mr-2"></div>
-                    <span className="font-josefin font-normal">
-                      {tender.companyOfferTender}
-                    </span>
-                  </div>
-                </td>
-                <td className="py-3 px-2 text-left">
-                  <div className="flex items-center">
-                    <div className="mr-2"></div>
-
-                    {tender.choice === 1 ? (
-                      <button
-                        className="py-2 px-5 bg-green/20 rounded-full font-josefin font-normal"
-                        style={{ color: color ? "green" : "orange" }}
-                      >
-                        Approved
-                      </button>
-                    ) : (
-                      <button
-                        className="py-2 px-5 bg-orange/20 rounded-full font-josefin font-normal"
-                        style={{ color: color ? "orange" : "green" }}
-                      >
-                        Pending
-                      </button>
-                    )}
-                  </div>
-                </td>
-              </tr>
-            </>
-          ))}
-        </tbody>
-      </table>
+    <div>
+      <main className="w-full">
+    
+        <DisplayTenderStatus bids={BidTenders} approve={approveTender} />
+      </main>
     </div>
   );
-};
+}
+
 export default TenderStatus;

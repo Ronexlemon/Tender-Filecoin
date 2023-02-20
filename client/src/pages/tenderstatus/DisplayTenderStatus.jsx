@@ -7,6 +7,7 @@ const DisplayTenderStatus = (props) => {
 
   const [color, setColor] = useState(true);
 
+
   return (
     <div className="w-[95%] mx-auto my-10">
       <h1 className="font-jakarta text-3xl font-extrabold">Tender Status</h1>
@@ -31,7 +32,7 @@ const DisplayTenderStatus = (props) => {
                   <div className="flex items-center">
                     <div className="mr-2"></div>
                     <span className="font-medium font-josefin">
-                      {tender.companyNames}
+                      {tender.companyName}
                     </span>
                   </div>
                 </td>
@@ -43,7 +44,7 @@ const DisplayTenderStatus = (props) => {
                     </span>
                     <a
                       className="font-josefin"
-                      href={tender.goodDealsWith}
+                      href={tender.goodsDealsWith}
                       target="_blank"
                     >
                       Link
@@ -54,7 +55,7 @@ const DisplayTenderStatus = (props) => {
                   <div className="flex items-center">
                     <div className="mr-2"></div>
                     <span className="font-josefin font-normal">
-                      {tender.companyOfferTender}
+                      {tender.tenderOwnerName}
                     </span>
                   </div>
                 </td>
@@ -62,7 +63,7 @@ const DisplayTenderStatus = (props) => {
                   <div className="flex items-center">
                     <div className="mr-2"></div>
 
-                    {tender.choice === 1 ? (
+                    {tender.choice == 1 ? (
                       <button
                         className="py-2 px-5 bg-green/20 rounded-full font-josefin font-normal"
                         style={{ color: color ? "green" : "orange" }}
