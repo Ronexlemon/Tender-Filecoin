@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/svg/tender-filecoin-logo.svg";
 
-const Navbar = () => {
+const NavbarLanding = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   // handle toggle menu
@@ -55,4 +55,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarLanding;
