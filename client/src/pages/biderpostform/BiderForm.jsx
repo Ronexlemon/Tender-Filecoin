@@ -13,7 +13,7 @@ const BiderForm = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const { id } = state; // Read values passed on state
-  const ContractBiderAddress = "0xE50A2E68f31e899D6e794314823cD2ac126BD764"; 
+  const ContractBiderAddress = "0x1F949e4688F0933B699899a04ad4f9E76112b560"; 
   const Web3ModalRef = useRef();
   const [biderCompanyName, setBiderCompanyName] = useState("");
   const [biderCompanyRegistrationNumber, setBiderCompanyRegistrationNumber] =

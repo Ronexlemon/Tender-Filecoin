@@ -10,7 +10,7 @@ import Banner from "../../components/Banner";
 //         statuschoices choice;
 //         string goodsDescription;
 
-const DisplayTenders = (props) => {
+const DisplayBidsTenders = (props) => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
@@ -129,4 +129,4 @@ const DisplayTenders = (props) => {
 //      ))
 
 //   }
-export default DisplayTenders;
+export default DisplayBidsTenders;
