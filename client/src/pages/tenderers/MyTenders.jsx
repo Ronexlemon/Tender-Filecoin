@@ -25,6 +25,7 @@ const AllMyTenders = () => {
       );
 
       const tenders = await TenderContracts.myTenders();
+      console.log("my tenders only", tenders);
       tenders?.forEach((element) => {
         _tenders.push(element);
       });
@@ -102,6 +103,7 @@ const AllMyTenders = () => {
   return (
     <div>
       <main className="">
+        {console.log("my Tendersghjm",Tenders)}
         <DisplayMyTenders tenders={Tenders} approve={Approve} />
       </main>
     </div>
