@@ -8,7 +8,7 @@ import { BiderAbi } from "../../abi/bidercontract_abi";
 
 const AvailableTenders = () => {
   const [Tenders, setTenders] = useState([]);
-  const TenderOwnerAddress = "0x1F949e4688F0933B699899a04ad4f9E76112b560";
+  const TenderOwnerAddress = "0x17cAC4066211b5FCeEDCee67c7ae18950417f4c9";
   const [tenderslength, setLength] = useState(0);
   const web3ModalRef = useRef();
   const Approve = () => {

@@ -10,7 +10,7 @@ import Banner from "../../components/Banner";
 // uint tenderAmount;
 // uint tendersindex;
 
-const DisplayTenders = (props) => {
+const DisplayMyTenders = (props) => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
@@ -39,14 +39,14 @@ const DisplayTenders = (props) => {
               {props.tenders.map((tender, index) => (
                 <>
                   <tr
-                    key={tender.tendersindex}
+                    key={index}
                     className="border-b border-gray-200  hover:bg-gray-100"
                   >
                     <td className="py-3 px-2 text-left whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="mr-2"></div>
                         <span className="font-medium font-josefin">
-                          {tender.companyName}
+                          {console.log("my tenders",tender.companyName)}
                         </span>
                       </div>
                     </td>
@@ -144,4 +144,4 @@ const DisplayTenders = (props) => {
 //      ))
 
 //   }
-export default DisplayTenders;
+export default DisplayMyTenders;

@@ -3,11 +3,11 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
 import { BiderAbi } from "../../abi/bidercontract_abi";
-import DisplayTenders from "./DisplayMyTenders";
+import DisplayMyTenders from "./DisplayMyTenders";
 
-const AvailableTenders = () => {
+const AllMyTenders = () => {
   const [Tenders, setTenders] = useState([]);
-  const TenderOwnerAddress = "0x1F949e4688F0933B699899a04ad4f9E76112b560";
+  const TenderOwnerAddress = "0x17cAC4066211b5FCeEDCee67c7ae18950417f4c9";
   const [tenderslength, setLength] = useState(0);
   const web3ModalRef = useRef();
   const Approve = () => {
@@ -102,9 +102,9 @@ const AvailableTenders = () => {
   return (
     <div>
       <main className="">
-        <DisplayTenders tenders={Tenders} approve={Approve} />
+        <DisplayMyTenders tenders={Tenders} approve={Approve} />
       </main>
     </div>
   );
 };
-export default AvailableTenders;
+export default AllMyTenders;
