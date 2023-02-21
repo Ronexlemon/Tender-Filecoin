@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Banner from "../../components/Banner";
-
+// address payable owner;
+// string companyName;
+// string tenderDescription;
+// string deadlineDate;
+// string contactEmail;
+// string email;
+// uint tenderAmount;
+// uint tendersindex;
 
 const DisplayTenders = (props) => {
   useEffect(() => {
@@ -32,7 +39,7 @@ const DisplayTenders = (props) => {
               {props.tenders.map((tender, index) => (
                 <>
                   <tr
-                    key={index}
+                    key={tender.tendersindex}
                     className="border-b border-gray-200  hover:bg-gray-100"
                   >
                     <td className="py-3 px-2 text-left whitespace-nowrap">

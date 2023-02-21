@@ -24,13 +24,13 @@ const AvailableTenders = () => {
         provider
       );
 
-      const tenders = await TenderContracts.readTenderDetails();
+      const tenders = await TenderContracts.viewBiderTenders();
       tenders?.forEach((element) => {
         _tenders.push(element);
       });
       setTenders(_tenders);
     } catch (error) {
-      console.log(error);
+      console.log("the error is",error);
     }
   }, []);
   // //getAllTenders

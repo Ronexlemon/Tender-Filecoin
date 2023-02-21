@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Banner from "../../components/Banner";
-
+// address payable bidowner;
+//         string companyName;
+//         string contact;
+//         string goodsDealsWith;
+//         string tenderOwnerName;
+//         uint bidsTenderIndex;
+//         statuschoices choice;
+//         string goodsDescription;
 
 const DisplayTenders = (props) => {
   useEffect(() => {
@@ -64,7 +71,7 @@ const DisplayTenders = (props) => {
                       <div className="flex items-center">
                         <div className="mr-2"></div>
                         <span className="font-josefin font-normal">
-                          {tender.tenderDescription}
+                          {tender.goodsDealsWith}
                         </span>
                       </div>
                     </td>

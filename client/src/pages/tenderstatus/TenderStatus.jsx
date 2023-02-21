@@ -1,7 +1,7 @@
 import React from "react";
 import { BiderAbi } from "../../abi/bidercontract_abi";
 import Web3Modal from "web3modal";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState,useCallback } from "react";
 import { providers, Contract } from "ethers";
 import DisplayTenderStatus from "./DisplayTenderStatus";
 
@@ -81,6 +81,7 @@ function TenderStatus() {
       <main className="w-full">
     
         <DisplayTenderStatus bids={BidTenders} approve={approveTender} />
+       
       </main>
     </div>
   );

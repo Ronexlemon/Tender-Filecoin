@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-
+// string companyName;
+// string contact;
+// string goodsDealsWith;
+// string tenderOwnerName;
+// uint bidsTenderIndex;
+// statuschoices choice;
+// string goodsDescription;
 const DisplayTenderStatus = (props) => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -32,7 +38,7 @@ const DisplayTenderStatus = (props) => {
                   <div className="flex items-center">
                     <div className="mr-2"></div>
                     <span className="font-medium font-josefin">
-                      {tender.companyName}
+                      {tender.companyName }
                     </span>
                   </div>
                 </td>

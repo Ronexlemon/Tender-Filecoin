@@ -11,6 +11,7 @@ import "./App.css";
 import DisplayTenderStatus from "./pages/tenderstatus/DisplayTenderStatus";
 import Bidders from "./pages/bidders/MyBids";
 import Tenderers from "./pages/tenderers/MyTenders";
+import TenderStatus from "./pages/tenderstatus/TenderStatus";
 
 function App() {
   return (
@@ -34,7 +35,7 @@ const LayoutComponent = ({ children }) => {
         <Route path="/TenderAllocation" element={<TenderAllocation />} />
         <Route path="/DisplayAvailableTenders" element={<DisplayTenders />} />
         <Route path="/AvailableTenders" element={<AvailableTenders />} />
-        <Route path="/TenderStatus" element={<DisplayTenderStatus />} />
+        <Route path="/TenderStatus" element={<TenderStatus />} />
         <Route path="/Approve" element={<Approve />} />
         <Route path="/mybids" element={<Bidders />} />
         <Route path="/mytenders" element={<Tenderers />} />
