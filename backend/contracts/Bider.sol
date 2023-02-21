@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.1;
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+// import "@openzeppelin/contracts/access/Ownable.sol";
 import "./TenderOwner.sol";
 
-contract Bider is Ownable, TenderPoster {
+contract Bider is TenderPoster {
     using SafeMath for uint;
     //include Rejected Status
 
@@ -15,7 +15,7 @@ contract Bider is Ownable, TenderPoster {
     }
 
     struct biderDetails {
-        address payable bidowner;
+        address  bidowner;
         string companyName;
         string contact;
         string goodsDealsWith;
@@ -92,7 +92,7 @@ contract Bider is Ownable, TenderPoster {
         }
         tenders = new biderDetails[](tenderlength);
         uint j = 0;
-        for (uint i = 0; i < tenderIndex; i++) {
+        for (uint i = 0; i < bidstenderlength; i++) {
             if (bidItems[i].bidowner == msg.sender) {
                 tenders[j] = bidItems[i];
                 j++;
@@ -109,7 +109,7 @@ contract Bider is Ownable, TenderPoster {
         uint _tenderbidsIndex
     )
         public
-        onlyOwner
+        onlyOwner(_tenderbidsIndex)
         returns (address, string memory, string memory, string memory)
     {
         require(
@@ -181,7 +181,7 @@ contract Bider is Ownable, TenderPoster {
         uint _tenderbidsIndex
     )
         public
-        onlyOwner
+        onlyOwner(_tenderbidsIndex)
         returns (address, string memory, string memory, string memory)
     {
         require(

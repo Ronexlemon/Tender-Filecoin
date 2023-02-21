@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Banner from "../../components/Banner";
+// address payable owner;
+// string companyName;
+// string tenderDescription;
+// string deadlineDate;
+// string contactEmail;
+// string email;
+// uint tenderAmount;
+// uint tendersindex;
 
-
-const DisplayTenders = (props) => {
+const DisplayMyTenders = (props) => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
@@ -39,7 +46,7 @@ const DisplayTenders = (props) => {
                       <div className="flex items-center">
                         <div className="mr-2"></div>
                         <span className="font-medium font-josefin">
-                          {tender.companyName}
+                          {console.log("my tenders",tender.companyName)}
                         </span>
                       </div>
                     </td>
@@ -137,4 +144,4 @@ const DisplayTenders = (props) => {
 //      ))
 
 //   }
-export default DisplayTenders;
+export default DisplayMyTenders;

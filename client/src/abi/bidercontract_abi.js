@@ -1,24 +1,5 @@
 export const BiderAbi = [
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "previousOwner",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "OwnershipTransferred",
-    "type": "event"
-  },
-  {
     "inputs": [
       {
         "internalType": "uint256",
@@ -85,7 +66,7 @@ export const BiderAbi = [
       {
         "components": [
           {
-            "internalType": "address payable",
+            "internalType": "address",
             "name": "owner",
             "type": "address"
           },
@@ -169,25 +150,12 @@ export const BiderAbi = [
   },
   {
     "inputs": [],
-    "name": "owner",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
     "name": "readBiderDetails",
     "outputs": [
       {
         "components": [
           {
-            "internalType": "address payable",
+            "internalType": "address",
             "name": "bidowner",
             "type": "address"
           },
@@ -242,7 +210,7 @@ export const BiderAbi = [
       {
         "components": [
           {
-            "internalType": "address payable",
+            "internalType": "address",
             "name": "owner",
             "type": "address"
           },
@@ -326,19 +294,12 @@ export const BiderAbi = [
   },
   {
     "inputs": [],
-    "name": "renounceOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
     "name": "showOnlyApprovedTender",
     "outputs": [
       {
         "components": [
           {
-            "internalType": "address payable",
+            "internalType": "address",
             "name": "bidowner",
             "type": "address"
           },
@@ -397,7 +358,7 @@ export const BiderAbi = [
     "name": "tenderItems",
     "outputs": [
       {
-        "internalType": "address payable",
+        "internalType": "address",
         "name": "owner",
         "type": "address"
       },
@@ -454,26 +415,13 @@ export const BiderAbi = [
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "transferOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [],
     "name": "viewBiderTenders",
     "outputs": [
       {
         "components": [
           {
-            "internalType": "address payable",
+            "internalType": "address",
             "name": "bidowner",
             "type": "address"
           },

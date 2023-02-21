@@ -1,7 +1,7 @@
 import React from "react";
 import { BiderAbi } from "../../abi/bidercontract_abi";
 import Web3Modal from "web3modal";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState,useCallback } from "react";
 import { providers, Contract } from "ethers";
 import DisplayTenderStatus from "./DisplayTenderStatus";
 
@@ -10,7 +10,7 @@ function TenderStatus() {
   const [walletconnect, setWalletConnect] = useState(false);
   const [BidTenders, setBidTenders] = useState([]);
   const [index, setIndex] = useState();
-  const ContractBiderAddress = "0xE50A2E68f31e899D6e794314823cD2ac126BD764";
+  const ContractBiderAddress = "0x17cAC4066211b5FCeEDCee67c7ae18950417f4c9";
   const Web3ModalRef = useRef();
   //provide sugner or provider
   const getProviderOrSigner = async (needSigner = false) => {
@@ -81,6 +81,7 @@ function TenderStatus() {
       <main className="w-full">
     
         <DisplayTenderStatus bids={BidTenders} approve={approveTender} />
+       
       </main>
     </div>
   );

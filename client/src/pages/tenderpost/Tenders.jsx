@@ -15,7 +15,7 @@ const Tenders = () => {
   let btnapprove = useRef(null);
   //let Tenders =[];
   const [Tenders, setTenders] = useState([]);
-  const TenderOwnerAddress = "0xE50A2E68f31e899D6e794314823cD2ac126BD764";
+  const TenderOwnerAddress = "0x17cAC4066211b5FCeEDCee67c7ae18950417f4c9";
   const [tenderslength, setLength] = useState(0);
   const web3ModalRef = useRef();
   const [walletconnect, setWalletConnect] = useState(false);
@@ -140,7 +140,7 @@ const Tenders = () => {
   //load content on reload
   useEffect(() => {
     web3ModalRef.current = new Web3Modal({
-      network: "Mumbai",
+      network: "hyperspace",
       providerOptions: {},
       disableInjectedProvider: false,
       cacheProvider: false,

@@ -8,7 +8,7 @@ import { BiderAbi } from "../../abi/bidercontract_abi";
 
 const AvailableTenders = () => {
   const [Tenders, setTenders] = useState([]);
-  const TenderOwnerAddress = "0xE50A2E68f31e899D6e794314823cD2ac126BD764";
+  const TenderOwnerAddress = "0x17cAC4066211b5FCeEDCee67c7ae18950417f4c9";
   const [tenderslength, setLength] = useState(0);
   const web3ModalRef = useRef();
   const Approve = () => {
@@ -91,7 +91,7 @@ const AvailableTenders = () => {
   };
   useEffect(() => {
     web3ModalRef.current = new Web3Modal({
-      network: "Mumbai",
+      network: "hyperspace",
       providerOptions: {},
       disableInjectedProvider: false,
       cacheProvider: false,

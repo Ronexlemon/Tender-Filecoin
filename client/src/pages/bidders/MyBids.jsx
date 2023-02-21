@@ -3,11 +3,11 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
 import { BiderAbi } from "../../abi/bidercontract_abi";
-import DisplayTenders from "./DisplayMyTenders";
+import DisplayBidsTenders from "../bidders/DisplayMyTenders"
 
-const AvailableTenders = () => {
+const MyBidsTenders = () => {
   const [Tenders, setTenders] = useState([]);
-  const TenderOwnerAddress = "0xE50A2E68f31e899D6e794314823cD2ac126BD764";
+  const TenderOwnerAddress = "0x17cAC4066211b5FCeEDCee67c7ae18950417f4c9";
   const [tenderslength, setLength] = useState(0);
   const web3ModalRef = useRef();
   const Approve = () => {
@@ -24,13 +24,13 @@ const AvailableTenders = () => {
         provider
       );
 
-      const tenders = await TenderContracts.readTenderDetails();
+      const tenders = await TenderContracts.viewBiderTenders();
       tenders?.forEach((element) => {
         _tenders.push(element);
       });
       setTenders(_tenders);
     } catch (error) {
-      console.log(error);
+      console.log("the error is",error);
     }
   }, []);
   // //getAllTenders
@@ -102,9 +102,9 @@ const AvailableTenders = () => {
   return (
     <div>
       <main className="">
-        <DisplayTenders tenders={Tenders} approve={Approve} />
+        <DisplayBidsTenders tenders={Tenders} approve={Approve} />
       </main>
     </div>
   );
 };
-export default AvailableTenders;
+export default MyBidsTenders ;
