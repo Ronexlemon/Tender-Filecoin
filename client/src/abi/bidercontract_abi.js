@@ -66,7 +66,7 @@ export const BiderAbi = [
       {
         "components": [
           {
-            "internalType": "address payable",
+            "internalType": "address",
             "name": "owner",
             "type": "address"
           },
@@ -155,7 +155,7 @@ export const BiderAbi = [
       {
         "components": [
           {
-            "internalType": "address payable",
+            "internalType": "address",
             "name": "bidowner",
             "type": "address"
           },
@@ -210,7 +210,7 @@ export const BiderAbi = [
       {
         "components": [
           {
-            "internalType": "address payable",
+            "internalType": "address",
             "name": "owner",
             "type": "address"
           },
@@ -299,7 +299,7 @@ export const BiderAbi = [
       {
         "components": [
           {
-            "internalType": "address payable",
+            "internalType": "address",
             "name": "bidowner",
             "type": "address"
           },
@@ -358,7 +358,7 @@ export const BiderAbi = [
     "name": "tenderItems",
     "outputs": [
       {
-        "internalType": "address payable",
+        "internalType": "address",
         "name": "owner",
         "type": "address"
       },
@@ -421,7 +421,7 @@ export const BiderAbi = [
       {
         "components": [
           {
-            "internalType": "address payable",
+            "internalType": "address",
             "name": "bidowner",
             "type": "address"
           },
