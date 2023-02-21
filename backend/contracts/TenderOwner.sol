@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.1;
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract TenderPoster is Ownable {
+// import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract TenderPoster {
     using SafeMath for uint;
     //enums for state
 
@@ -20,6 +21,14 @@ contract TenderPoster is Ownable {
     mapping(uint => TenderDetails) public tenderItems;
 
     uint tenderIndex = 0;
+    //modifier fo the owner
+    modifier onlyOwner(uint _index) {
+        require(
+            tenderItems[_index].owner == msg.sender,
+            "only owner can perform this"
+        );
+        _;
+    }
 
     function writeTenderDetails(
         string memory _companyName,
@@ -90,7 +99,7 @@ contract TenderPoster is Ownable {
     }
 
     //delete Tender
-    function deleteTender(uint _index) public onlyOwner {
+    function deleteTender(uint _index) public onlyOwner(_index) {
         require(msg.sender != address(this), "Only The Owner can delete");
         delete tenderItems[_index];
     }
