@@ -140,7 +140,7 @@ const Tenders = () => {
   //load content on reload
   useEffect(() => {
     web3ModalRef.current = new Web3Modal({
-      network: "Mumbai",
+      network: "hyperspace",
       providerOptions: {},
       disableInjectedProvider: false,
       cacheProvider: false,

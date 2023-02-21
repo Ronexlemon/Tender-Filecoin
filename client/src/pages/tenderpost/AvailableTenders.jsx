@@ -91,7 +91,7 @@ const AvailableTenders = () => {
   };
   useEffect(() => {
     web3ModalRef.current = new Web3Modal({
-      network: "Mumbai",
+      network: "hyperspace",
       providerOptions: {},
       disableInjectedProvider: false,
       cacheProvider: false,
