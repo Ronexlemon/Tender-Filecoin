@@ -9,7 +9,7 @@ contract TenderPoster {
     //enums for state
 
     struct TenderDetails {
-        address payable owner;
+        address  owner;
         string companyName;
         string tenderDescription;
         string deadlineDate;

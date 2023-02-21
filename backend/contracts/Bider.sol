@@ -15,7 +15,7 @@ contract Bider is TenderPoster {
     }
 
     struct biderDetails {
-        address payable bidowner;
+        address  bidowner;
         string companyName;
         string contact;
         string goodsDealsWith;
