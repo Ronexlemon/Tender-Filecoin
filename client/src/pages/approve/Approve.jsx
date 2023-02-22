@@ -1,9 +1,9 @@
 import React from "react";
-import { BiderAbi } from "../../abi/bidercontract_abi";
+;import { BiderAbi } from "../../abi/bidercontract_abi";
 import Web3Modal from "web3modal";
 import { useRef, useEffect, useState,useCallback } from "react";
 import { providers, Contract } from "ethers";
-import DisplayBids from "./displayBids";
+import DisplayBids from "./displayBids"
 
 
 function Approve() {

@@ -1,9 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
 import { useStateContext } from "../contexts/ContextProvider";
+import Web3Modal from "web3modal";
+import { useRef, useEffect, useState,useCallback } from "react";
+import { providers, Contract } from "ethers";
+
+
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">
@@ -31,6 +36,38 @@ const Navbar = () => {
     setScreenSize,
     screenSize,
   } = useStateContext();
+  const [walletconnect, setWalletConnect] = useState(false);
+  const [BidTenders, setBidTenders] = useState([]);
+  const [index, setIndex] = useState();
+  const ContractBiderAddress = "0x0dDCC4ccA81cF91953a6dcbf8da45C125d39A6bE"; 
+  const Web3ModalRef = useRef();
+  //provide sugner or provider
+  const connectWallet = async (needSigner = false) => {
+    const provider = await Web3ModalRef.current.connect();
+    const web3Provider = new providers.Web3Provider(provider);
+    
+    // check if network is Mumbai
+    const { chainId } = await web3Provider.getNetwork();
+    if (chainId !== 3141) {
+      window.alert("Change network to HyperSpace fileCoin");
+      throw new Error("Change network To HyperSpace fileCoin ");
+    }
+    setWalletConnect(true);
+    if (needSigner) {
+      const signer = web3Provider.getSigner();
+      return signer;
+    }
+    return web3Provider;
+  };
+  useEffect(() => {
+    Web3ModalRef.current = new Web3Modal({
+      network: "hyperspace",
+      providerOptions: {},
+      disableInjectedProvider: false,
+      cacheProvider: false,
+    });
+    
+  }, []);
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -60,12 +97,20 @@ const Navbar = () => {
         color={currentColor}
         icon={<AiOutlineMenu />}
       />
-      <button
+      {walletconnect == true?<button
+        onClick={()=>{connectWallet()}}
+        className="px-4 py-2 font-josefin text-white bg-green-400 rounded-md shadow-md hover:shadow-lg"
+      >
         
+        Connected
+      </button>:<button
+        onClick={()=>{connectWallet()}}
         className="px-4 py-2 font-josefin text-white bg-button-color rounded-md shadow-md hover:shadow-lg"
       >
+        
         Connect Wallet
-      </button>
+      </button>}
+     
     </div>
   );
 };
