@@ -14,6 +14,7 @@ import Bidders from "./pages/bidders/MyBids";
 import TenderStatus from "./pages/tenderstatus/TenderStatus";
 import AllMyTenders from "./pages/tenderers/MyTenders";
 import MyBidsTenders from "./pages/bidders/MyBids";
+import Web3 from "./web3-storage/web3";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ const LayoutComponent = ({ children }) => {
         <Route path="/Approve" element={<Approve />} />
         <Route path="/mybids" element={<MyBidsTenders />} />
         <Route path="/mytenders" element={<AllMyTenders />} />
+        <Route path="/uploadweb3" element={<Web3 />} />
       </Routes>
       {children}
     </Layout>
