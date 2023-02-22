@@ -15,7 +15,7 @@ contract Bider is TenderPoster {
     }
 
     struct biderDetails {
-        address  bidowner;
+        address bidowner;
         string companyName;
         string contact;
         string goodsDealsWith;
@@ -53,7 +53,7 @@ contract Bider is TenderPoster {
         );
         uint _bidsindex = bidstenderlength;
         bidItems[_tenderIndex] = biderDetails(
-            payable(msg.sender),
+            msg.sender,
             _companyName,
             _contact,
             _goodsDealsWith,
@@ -79,25 +79,24 @@ contract Bider is TenderPoster {
     }
 
     //function to return only bider details
-    function viewBiderTenders()
-        public
-        view
-        returns (biderDetails[] memory tenders)
-    {
+    function viewBiderTenders() public view returns (biderDetails[] memory) {
         uint tenderlength = 0;
-        for (uint i = 0; i < bidstenderlength; i++) {
+        uint allbidertenderlength = bidstenderlength;
+        for (uint i = 0; i < allbidertenderlength; i++) {
             if (bidItems[i].bidowner == msg.sender) {
-                tenderlength++;
+                tenderlength += 1;
             }
         }
-        tenders = new biderDetails[](tenderlength);
+        biderDetails[] memory tenders = new biderDetails[](tenderlength);
         uint j = 0;
-        for (uint i = 0; i < bidstenderlength; i++) {
+        for (uint i = 0; i < allbidertenderlength; i++) {
             if (bidItems[i].bidowner == msg.sender) {
-                tenders[j] = bidItems[i];
-                j++;
+                biderDetails storage mybids = bidItems[i];
+                tenders[j] = mybids;
+                j += 1;
             }
         }
+        return tenders;
     }
 
     function getTotalBindsLength() public view returns (uint) {
