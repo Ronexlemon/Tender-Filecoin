@@ -7,7 +7,7 @@ import DisplayMyTenders from "./DisplayMyTenders";
 
 const AllMyTenders = () => {
   const [Tenders, setTenders] = useState([]);
-  const TenderOwnerAddress = "0x17cAC4066211b5FCeEDCee67c7ae18950417f4c9";
+  const TenderOwnerAddress = "0x0dDCC4ccA81cF91953a6dcbf8da45C125d39A6bE";
   const [tenderslength, setLength] = useState(0);
   const web3ModalRef = useRef();
   const Approve = () => {
@@ -23,8 +23,10 @@ const AllMyTenders = () => {
         BiderAbi,
         provider
       );
-
-      const tenders = await TenderContracts.myTenders();
+      
+      const tenders = await TenderContracts.readTenderDetails();
+      const tenderstotal = await TenderContracts.tenderTotals();
+      console.log("tender total is", tenderstotal.toString());
       console.log("my tenders only", tenders);
       tenders?.forEach((element) => {
         _tenders.push(element);

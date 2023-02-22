@@ -107,7 +107,7 @@ export const BiderAbi = [
           }
         ],
         "internalType": "struct TenderPoster.TenderDetails[]",
-        "name": "tenders",
+        "name": "",
         "type": "tuple[]"
       }
     ],
@@ -462,7 +462,7 @@ export const BiderAbi = [
           }
         ],
         "internalType": "struct Bider.biderDetails[]",
-        "name": "tenders",
+        "name": "",
         "type": "tuple[]"
       }
     ],

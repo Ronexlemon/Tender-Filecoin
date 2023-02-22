@@ -46,7 +46,7 @@ const DisplayMyTenders = (props) => {
                       <div className="flex items-center">
                         <div className="mr-2"></div>
                         <span className="font-medium font-josefin">
-                          {console.log("my tenders",tender.companyName)}
+                          {tender.companyName}
                         </span>
                       </div>
                     </td>
