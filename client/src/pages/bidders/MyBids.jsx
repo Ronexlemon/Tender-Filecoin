@@ -5,6 +5,7 @@ import { providers, Contract } from "ethers";
 import { BiderAbi } from "../../abi/bidercontract_abi";
 import DisplayBidsTenders from "../bidders/DisplayMyTenders"
 
+
 const MyBidsTenders = () => {
   const [Tenders, setTenders] = useState([]);
   const TenderOwnerAddress = "0x0dDCC4ccA81cF91953a6dcbf8da45C125d39A6bE";
@@ -24,7 +25,7 @@ const MyBidsTenders = () => {
         provider
       );
 
-      const tenders = await TenderContracts.viewBiderTenders();
+      const tenders = await TenderContracts.readBiderDetails();
       tenders?.forEach((element) => {
         _tenders.push(element);
       });

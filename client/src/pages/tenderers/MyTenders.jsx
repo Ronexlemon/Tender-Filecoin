@@ -23,8 +23,10 @@ const AllMyTenders = () => {
         BiderAbi,
         provider
       );
-
-      const tenders = await TenderContracts.myTenders();
+      
+      const tenders = await TenderContracts.readTenderDetails();
+      const tenderstotal = await TenderContracts.tenderTotals();
+      console.log("tender total is", tenderstotal.toString());
       console.log("my tenders only", tenders);
       tenders?.forEach((element) => {
         _tenders.push(element);

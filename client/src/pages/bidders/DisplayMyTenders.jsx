@@ -14,7 +14,7 @@ const DisplayBidsTenders = (props) => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
-
+  const [color, setColor] = useState(true);
   const navigate = useNavigate();
 
   return (
@@ -28,11 +28,11 @@ const DisplayBidsTenders = (props) => {
             <thead className="border-b border-gray-200 hover:bg-gray-100">
               <tr className="bg-white text-gray-500 text-sm leading-normal rounded-lg">
                 <th className="py-3 px-6 text-left">Company Name</th>
-                <th className="py-3 px-6 text-left">Email</th>
-                <th className="py-3 px-6 text-left">Phone Number</th>
+                <th className="py-3 px-6 text-left">Contact</th>
+                <th className="py-3 px-6 text-left">Tender Owner</th>
                 <th className="py-3 px-6 text-left">Tender Description</th>
-                <th className="py-3 px-6 text-left">Deadline Date</th>
-                <th className="py-3 px-6 text-left">Tender Amount</th>
+                <th className="py-3 px-6 text-left">Status</th>
+                {/* <th className="py-3 px-6 text-left">Tender Amount</th> */}
                 
               </tr>
             </thead>
@@ -55,7 +55,7 @@ const DisplayBidsTenders = (props) => {
                       <div className="flex items-center">
                         <div className="mr-2"></div>
                         <span className="font-josefin font-normal">
-                          {tender.email}
+                          {tender.contact}
                         </span>
                       </div>
                     </td>
@@ -63,7 +63,7 @@ const DisplayBidsTenders = (props) => {
                       <div className="flex items-center">
                         <div className="mr-2"></div>
                         <span className="font-josefin font-normal">
-                        {tender.contactEmail}
+                        {tender.tenderOwnerName}
                         </span>
                       </div>
                     </td>
@@ -79,18 +79,32 @@ const DisplayBidsTenders = (props) => {
                       <div className="flex items-center">
                         <div className="mr-2"></div>
                         <span className="font-josefin font-normal">
-                          {tender.deadlineDate}
+                        {tender.choice == 1 ? (
+                      <button
+                        className="py-2 px-5 bg-green/20 rounded-full font-josefin font-normal"
+                        style={{ color: color ? "green" : "orange" }}
+                      >
+                        Approved
+                      </button>
+                    ) : (
+                      <button
+                        className="py-2 px-5 bg-orange/20 rounded-full font-josefin font-normal"
+                        style={{ color: color ? "orange" : "green" }}
+                      >
+                        Pending
+                      </button>
+                    )}
                         </span>
                       </div>
                     </td>
-                    <td className="py-3 px-6 text-left">
+                    {/* <td className="py-3 px-6 text-left">
                       <div className="flex items-center">
                         <div className="mr-2"></div>
                         <span className="font-josefin font-normal">
                           {tender.tenderAmount / 1}
                         </span>
                       </div>
-                    </td>
+                    </td> */}
                    
                   </tr>
                 </>
