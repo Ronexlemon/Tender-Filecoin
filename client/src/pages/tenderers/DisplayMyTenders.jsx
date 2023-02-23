@@ -42,71 +42,67 @@ const DisplayMyTenders = (props) => {
                     key={index}
                     className="border-b border-gray-200  hover:bg-gray-100"
                   >
-                    <td className="py-3 px-2 text-left whitespace-nowrap">
+                   
+                     {tender.owner.toString() == props.userAccount.toString()? <><td className="py-3 px-2 text-left whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="mr-2"></div>
                         <span className="font-medium font-josefin">
                           {tender.companyName}
                         </span>
                       </div>
-                    </td>
-                    <td className="py-3 px-2 text-left ">
-                      <div className="flex items-center">
-                        <div className="mr-2"></div>
-                        <span className="font-josefin font-normal">
-                          {tender.email}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="py-3 px-2 text-left">
-                      <div className="flex items-center">
-                        <div className="mr-2"></div>
-                        <span className="font-josefin font-normal">
-                          {tender.contactEmail}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="py-3 px-2 text-left">
-                      <div className="flex items-center">
-                        <div className="mr-2"></div>
-                        <span className="font-josefin font-normal">
-                          {tender.tenderDescription}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="py-3 px-2 text-left">
-                      <div className="flex items-center">
-                        <div className="mr-2"></div>
-                        <span className="font-josefin font-normal">
-                          {tender.deadlineDate}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="py-3 px-6 text-left">
-                      <div className="flex items-center">
-                        <div className="mr-2"></div>
-                        <span className="font-josefin font-normal">
-                          {tender.tenderAmount / 1}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="py-3 px-6 text-left">
-                      <div className="flex items-center">
-                        <div className="mr-2"></div>
-                        <span className="font-josefin font-normal">
-                          {/* {tender.tenderAmount / 1} */}
-                          {tender.deadlineDate >= new Date().toString() ? (
-                            <button className="bg-rose-300 text-rose-800 py-2 px-4 rounded-lg">
-                              Inactive
-                            </button>
-                          ) : (
-                            <button className="bg-green-200 text-green-800 py-2 px-4 rounded-lg">
-                              Active
-                            </button>
-                          )}
-                        </span>
-                      </div>
-                    </td>
+                    </td><td className="py-3 px-2 text-left ">
+                        <div className="flex items-center">
+                          <div className="mr-2"></div>
+                          <span className="font-josefin font-normal">
+                            {tender.email}
+                          </span>
+                        </div>
+                      </td><td className="py-3 px-2 text-left">
+                        <div className="flex items-center">
+                          <div className="mr-2"></div>
+                          <span className="font-josefin font-normal">
+                            {tender.contactEmail}
+                          </span>
+                        </div>
+                      </td><td className="py-3 px-2 text-left">
+                        <div className="flex items-center">
+                          <div className="mr-2"></div>
+                          <span className="font-josefin font-normal">
+                            {tender.tenderDescription}
+                          </span>
+                        </div>
+                      </td><td className="py-3 px-2 text-left">
+                        <div className="flex items-center">
+                          <div className="mr-2"></div>
+                          <span className="font-josefin font-normal">
+                            {tender.deadlineDate}
+                          </span>
+                        </div>
+                      </td><td className="py-3 px-6 text-left">
+                        <div className="flex items-center">
+                          <div className="mr-2"></div>
+                          <span className="font-josefin font-normal">
+                            {tender.tenderAmount / 1}
+                          </span>
+                        </div>
+                      </td><td className="py-3 px-6 text-left">
+                        <div className="flex items-center">
+                          <div className="mr-2"></div>
+                          <span className="font-josefin font-normal">
+                            {/* {tender.tenderAmount / 1} */}
+                            {tender.deadlineDate >= new Date().toString() ? (
+                              <button className="bg-rose-300 text-rose-800 py-2 px-4 rounded-lg">
+                                Inactive
+                              </button>
+                            ) : (
+                              <button className="bg-green-200 text-green-800 py-2 px-4 rounded-lg">
+                                Active
+                              </button>
+                            )}
+                          </span>
+                        </div>
+                      </td></>:console.log("not match")}
+                   
                   </tr>
                 </>
               ))}

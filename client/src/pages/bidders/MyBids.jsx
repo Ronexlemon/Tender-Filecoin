@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
 import { BiderAbi } from "../../abi/bidercontract_abi";
-import DisplayBidsTenders from "../bidders/DisplayMyTenders"
+import DisplayBidsTenders from "./DisplayMyBids"
 
 
 const MyBidsTenders = () => {

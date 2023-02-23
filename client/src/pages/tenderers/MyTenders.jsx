@@ -89,6 +89,7 @@ const AllMyTenders = () => {
     if (needSigner) {
       const signer = web3Provider.getSigner();
       const accounts = await signer.getAddress();
+      setUserAccount(accounts);
       // setaddress(accounts);
       return signer;
     }
@@ -110,7 +111,7 @@ const AllMyTenders = () => {
     <div>
       <main className="">
         
-        <DisplayMyTenders tenders={Tenders} userAccount={setUserAccount} approve={Approve} />
+        <DisplayMyTenders tenders={Tenders} userAccount={userAccount} approve={Approve} />
       </main>
     </div>
   );
