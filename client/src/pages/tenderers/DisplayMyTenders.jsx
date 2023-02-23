@@ -101,7 +101,7 @@ const DisplayMyTenders = (props) => {
                             )}
                           </span>
                         </div>
-                      </td></>:console.log("not match")}
+                      </td></>:pass}
                    
                   </tr>
                 </>
