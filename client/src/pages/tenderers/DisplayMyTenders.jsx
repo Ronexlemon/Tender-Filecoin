@@ -90,7 +90,7 @@ const DisplayMyTenders = (props) => {
                           <div className="mr-2"></div>
                           <span className="font-josefin font-normal">
                             {/* {tender.tenderAmount / 1} */}
-                            {tender.deadlineDate >= new Date().toString() ? (
+                            {new Date(tender.deadlineDate ).getTime() <= new Date( ).getTime() ? (
                               <button className="bg-rose-300 text-rose-800 py-2 px-4 rounded-lg">
                                 Inactive
                               </button>
