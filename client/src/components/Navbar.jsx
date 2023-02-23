@@ -66,6 +66,7 @@ const Navbar = () => {
       disableInjectedProvider: false,
       cacheProvider: false,
     });
+    connectWallet();
     
   }, []);
 

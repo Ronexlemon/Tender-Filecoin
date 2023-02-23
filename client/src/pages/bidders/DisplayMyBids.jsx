@@ -16,6 +16,7 @@ const DisplayBidsTenders = (props) => {
   }, []);
   const [color, setColor] = useState(true);
   const navigate = useNavigate();
+  const [nothavetender,setNotHaveTender] = useState(false);
 
   return (
     <div className="">
@@ -33,83 +34,80 @@ const DisplayBidsTenders = (props) => {
                 <th className="py-3 px-6 text-left">Tender Description</th>
                 <th className="py-3 px-6 text-left">Status</th>
                 {/* <th className="py-3 px-6 text-left">Tender Amount</th> */}
+               
                 
               </tr>
             </thead>
             <tbody className="text-[#130026]  text-sm font-light">
               {props.tenders.map((tender, index) => (
+                
                 <>
+                 
                   <tr
                     key={index}
                     className="border-b border-gray-200  hover:bg-gray-100"
                   >
-                    <td className="py-3 px-2 text-left whitespace-nowrap">
-                      <div className="flex items-center">
-                        <div className="mr-2"></div>
-                        <span className="font-medium font-josefin">
-                          {tender.companyName}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="py-3 px-2 text-left ">
-                      <div className="flex items-center">
-                        <div className="mr-2"></div>
-                        <span className="font-josefin font-normal">
-                          {tender.contact}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="py-3 px-2 text-left">
-                      <div className="flex items-center">
-                        <div className="mr-2"></div>
-                        <span className="font-josefin font-normal">
-                        {tender.tenderOwnerName}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="py-3 px-2 text-left">
-                      <div className="flex items-center">
-                        <div className="mr-2"></div>
-                        <span className="font-josefin font-normal">
-                          {tender.goodsDealsWith}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="py-3 px-2 text-left">
-                      <div className="flex items-center">
-                        <div className="mr-2"></div>
-                        <span className="font-josefin font-normal">
-                        {tender.choice == 1 ? (
-                      <button
-                        className="py-2 px-5 bg-green/20 rounded-full font-josefin font-normal"
-                        style={{ color: color ? "green" : "orange" }}
-                      >
-                        Approved
-                      </button>
-                    ) : (
-                      <button
-                        className="py-2 px-5 bg-orange/20 rounded-full font-josefin font-normal"
-                        style={{ color: color ? "orange" : "green" }}
-                      >
-                        Pending
-                      </button>
-                    )}
-                        </span>
-                      </div>
-                    </td>
-                    {/* <td className="py-3 px-6 text-left">
-                      <div className="flex items-center">
-                        <div className="mr-2"></div>
-                        <span className="font-josefin font-normal">
-                          {tender.tenderAmount / 1}
-                        </span>
-                      </div>
-                    </td> */}
+                    
+                    {tender.bidowner.toString() == props.userAccount.toString()?<><td className="py-3 px-2 text-left whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="mr-2"></div>
+                          <span className="font-medium font-josefin">
+                            {tender.companyName}
+                          </span>
+                        </div>
+                      </td><td className="py-3 px-2 text-left ">
+                          <div className="flex items-center">
+                            <div className="mr-2"></div>
+                            <span className="font-josefin font-normal">
+                              {tender.contact}
+                            </span>
+                          </div>
+                        </td><td className="py-3 px-2 text-left">
+                          <div className="flex items-center">
+                            <div className="mr-2"></div>
+                            <span className="font-josefin font-normal">
+                              {tender.tenderOwnerName}
+                            </span>
+                          </div>
+                        </td><td className="py-3 px-2 text-left">
+                          <div className="flex items-center">
+                            <div className="mr-2"></div>
+                            <span className="font-josefin font-normal">
+                              {tender.goodsDealsWith}
+                            </span>
+                          </div>
+                        </td><td className="py-3 px-2 text-left">
+                          <div className="flex items-center">
+                            <div className="mr-2"></div>
+                            <span className="font-josefin font-normal">
+                              {tender.choice == 1 ? (
+                                <button
+                                  className="py-2 px-5 bg-green/20 rounded-full font-josefin font-normal"
+                                  style={{ color: color ? "green" : "orange" }}
+                                >
+                                  Approved
+                                </button>
+                              ) : (
+                                <button
+                                  className="py-2 px-5 bg-orange/20 rounded-full font-josefin font-normal"
+                                  style={{ color: color ? "orange" : "green" }}
+                                >
+                                  Pending
+                                </button>
+                              )}
+                            </span>
+                          </div>
+                        </td></>
                    
+                   :nothavetender ? "":setNotHaveTender(true)}
+                    
+                   
+                    
                   </tr>
                 </>
               ))}
             </tbody>
+            {nothavetender?<h1>User <span className="text-red-500 mr-4 ml-4">{props.userAccount}</span> don't have any bids</h1>:""}
           </table>
         </div>
       </div>

@@ -3,13 +3,14 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
 import { BiderAbi } from "../../abi/bidercontract_abi";
-import DisplayBidsTenders from "../bidders/DisplayMyTenders"
+import DisplayBidsTenders from "./DisplayMyBids"
 
 
 const MyBidsTenders = () => {
   const [Tenders, setTenders] = useState([]);
   const TenderOwnerAddress = "0x0dDCC4ccA81cF91953a6dcbf8da45C125d39A6bE";
   const [tenderslength, setLength] = useState(0);
+  const [userAccount, setUserAccount] = useState(null);
   const web3ModalRef = useRef();
   const Approve = () => {
     alert("yooh");
@@ -78,6 +79,9 @@ const MyBidsTenders = () => {
       window.alert("Change network to HyperSpace fileCoin");
       throw new Error("Change network To HyperSpace fileCoin ");
     }
+    const signer = web3Provider.getSigner();
+    const accounts = await signer.getAddress();
+    setUserAccount(accounts);
     // alert("network is Mumbai")
     //if need signer for transactions
     if (needSigner) {
@@ -103,7 +107,8 @@ const MyBidsTenders = () => {
   return (
     <div>
       <main className="">
-        <DisplayBidsTenders tenders={Tenders} approve={Approve} />
+        
+        <DisplayBidsTenders tenders={Tenders} userAccount={userAccount} approve={Approve} />
       </main>
     </div>
   );

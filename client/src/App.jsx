@@ -15,9 +15,11 @@ import TenderStatus from "./pages/tenderstatus/TenderStatus";
 import AllMyTenders from "./pages/tenderers/MyTenders";
 import MyBidsTenders from "./pages/bidders/MyBids";
 
+
 function App() {
   return (
     <div className="">
+      
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
