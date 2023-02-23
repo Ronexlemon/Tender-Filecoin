@@ -107,8 +107,9 @@ const DisplayBidsTenders = (props) => {
                 </>
               ))}
             </tbody>
-            {nothavetender?<h1>User <span className="text-red-500 mr-4 ml-4">{props.userAccount}</span> don't have any bids</h1>:""}
+            
           </table>
+          {nothavetender?<h1>User <span className="text-red-500 mr-4 ml-4">{props.userAccount}</span> don't have any bids</h1>:""}
         </div>
       </div>
     </div>
