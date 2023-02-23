@@ -16,6 +16,7 @@ const DisplayMyTenders = (props) => {
   }, []);
 
   const navigate = useNavigate();
+  const [nothavetender,setNotHaveTender] = useState(false);
 
   return (
     <div className="">
@@ -101,13 +102,16 @@ const DisplayMyTenders = (props) => {
                             )}
                           </span>
                         </div>
-                      </td></>:pass}
-                   
+                      </td></>: nothavetender ? "":setNotHaveTender(true)}
+                      
+                      
                   </tr>
                 </>
               ))}
             </tbody>
+            {nothavetender?<h1>User <span className="text-red-500 mr-4 ml-4">{props.userAccount}</span> don't have any Tenders</h1>:""}
           </table>
+         
         </div>
       </div>
     </div>
