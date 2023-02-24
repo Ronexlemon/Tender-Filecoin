@@ -2,6 +2,7 @@ import "./web3.css";
 import { useState } from "react";
 import { create as ipfsHttpClient } from "ipfs-http-client";
 import { Web3Storage, getFilesFromPath } from 'web3.storage'
+import BiderForm from "../pages/biderpostform/BiderForm";
 
 
 
@@ -16,6 +17,7 @@ const authorization = "Basic " + btoa(projectId + ":" + projectSecretKey);
  function Web3() {
    const [uploadedImages, setUploadedImages] = useState([]);
    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDJFRjRiMTdhYzY1MjgzNEYxQTBkMTQxNTUwOTRlYTdiYTMzRWEyOWIiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzcyMzA1NTE0NTMsIm5hbWUiOiJ0ZW5kZXJzcGFjZSJ9.CwbHkp79KAwCjQTpRmlRJWSWKa10VBSJLLv4eMrmVJs";
+   const [url,setUrl] = useState(null);
   // const ipfs = ipfsHttpClient({
   //   url: "https://filecoin.infura.io",
   //   headers: {
@@ -62,6 +64,8 @@ const authorization = "Basic " + btoa(projectId + ":" + projectSecretKey);
     console.log(`Uploading ${files.length} files`)
     const cid = await storage.put(files)
     console.log('Content added with CID:', "https://"+cid+".ipfs.w3s.link/"+`${file.name}`)
+    const urlfromfilecoin = "https://"+cid+".ipfs.w3s.link/"+`${file.name}`;
+    setUrl(urlfromfilecoin);
   }
   
 

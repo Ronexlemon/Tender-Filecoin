@@ -5,6 +5,7 @@ import { useRef, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { SiBitcoincash } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
+import Web3 from "../../web3-storage/web3";
 
 import { providers, Contract } from "ethers";
 
@@ -176,6 +177,7 @@ const BiderForm = () => {
                     </label>
                     <br />
                     <input
+
                       className="py-3 px-4 border-2 rounded-lg"
                       type="text"
                       id="deadline"
@@ -185,6 +187,7 @@ const BiderForm = () => {
                       onChange={(e) => setTypeOfGoods(e.target.value)}
                       value={bidertypeOfGoods}
                     />
+                    <button onClick={()=>{navigate("/uploadweb3")}}>upload</button>
                   </div>
 
                   <div className="flex justify-between my-4">
