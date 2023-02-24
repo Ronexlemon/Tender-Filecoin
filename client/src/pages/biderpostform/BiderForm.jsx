@@ -13,6 +13,10 @@ import { providers, Contract } from "ethers";
 const BiderForm = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
+  const location = useLocation();
+  const documenturl = location.state?.documenturl;
+ 
+ 
   const { id } = state; // Read values passed on state
   const ContractBiderAddress = "0x0dDCC4ccA81cF91953a6dcbf8da45C125d39A6bE"; 
   const Web3ModalRef = useRef();
@@ -182,12 +186,13 @@ const BiderForm = () => {
                       type="text"
                       id="deadline"
                       name="deadline"
-                      placeholder="https://documents.tender.io"
+                      placeholder={documenturl}
                       required
-                      onChange={(e) => setTypeOfGoods(e.target.value)}
+                      onChange={(e) => setTypeOfGoods(documenturl)}
                       value={bidertypeOfGoods}
                     />
                     <button onClick={()=>{navigate("/uploadweb3")}}>upload</button>
+                    {console.log("the url is",documenturl)}
                   </div>
 
                   <div className="flex justify-between my-4">

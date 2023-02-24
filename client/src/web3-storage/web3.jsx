@@ -3,6 +3,7 @@ import { useState } from "react";
 import { create as ipfsHttpClient } from "ipfs-http-client";
 import { Web3Storage, getFilesFromPath } from 'web3.storage'
 import BiderForm from "../pages/biderpostform/BiderForm";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -16,8 +17,9 @@ const authorization = "Basic " + btoa(projectId + ":" + projectSecretKey);
 
  function Web3() {
    const [uploadedImages, setUploadedImages] = useState([]);
+   const navigate = useNavigate();
    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDJFRjRiMTdhYzY1MjgzNEYxQTBkMTQxNTUwOTRlYTdiYTMzRWEyOWIiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzcyMzA1NTE0NTMsIm5hbWUiOiJ0ZW5kZXJzcGFjZSJ9.CwbHkp79KAwCjQTpRmlRJWSWKa10VBSJLLv4eMrmVJs";
-   const [url,setUrl] = useState(null);
+  //  const [linkurl,setUrl] = useState(null);
   // const ipfs = ipfsHttpClient({
   //   url: "https://filecoin.infura.io",
   //   headers: {
@@ -64,10 +66,20 @@ const authorization = "Basic " + btoa(projectId + ":" + projectSecretKey);
     console.log(`Uploading ${files.length} files`)
     const cid = await storage.put(files)
     console.log('Content added with CID:', "https://"+cid+".ipfs.w3s.link/"+`${file.name}`)
-    const urlfromfilecoin = "https://"+cid+".ipfs.w3s.link/"+`${file.name}`;
-    setUrl(urlfromfilecoin);
+    const linkurl = "https://"+cid+".ipfs.w3s.link/"+`${file.name}`;
+    if(linkurl != null){
+      navigate("/BiderForm", { state: { documenturl: linkurl } })
+    }
+    // setUrl(urlfromfilecoin);
+    
   }
   
+  const navigateToBiderForm = async()=>{
+    if(linkurl != null){
+      navigate("/BiderForm", { state: { documenturl: linkurl } })
+    }
+    {console.log("test link", linkurl)}
+  }
 
   return (
     <div className="app">
@@ -80,7 +92,7 @@ const authorization = "Basic " + btoa(projectId + ":" + projectSecretKey);
                 Select File
               </label>
               <input id="file-upload" type="file" name="file" />
-              <button className="button" type="submit">
+              <button  className="button" type="submit">
                 Upload file
               </button>
             </form>
@@ -97,9 +109,9 @@ const authorization = "Basic " + btoa(projectId + ":" + projectSecretKey);
                 key={image.cid.toString() + index}
               />
               <h4>Link to IPFS:</h4>
-              {/* <a href={"https://filecoin.infura.io" + image.path}>
-                <h3>{"https://filecoin.infura.io" + image.path}</h3>
-              </a> */}
+              <a href={linkurl}>
+                <h3>{linkurl}</h3>
+              </a>
             </>
           ))}
         </div>
