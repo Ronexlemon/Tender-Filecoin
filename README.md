@@ -16,10 +16,10 @@
 
 ## Screenshots
 ### TenderSpace Landing Page
- ![image](client\screenshots\Screenshot_20230227_010243.png)
+ ![image](./client\screenshots\Screenshot_20230227_010243.png)
 
 ### TenderSpace Dashboard Page
- ![image](client\screenshots\Screenshot_20230227_010441.png)
+ ![image](./client\screenshots\Screenshot_20230227_010441.png)
 
 
 ## Description
