@@ -22,11 +22,13 @@ const  HeroText = () => {
           </button>
         </Link>
       </article>
-      <img
-        src={appExample}
-        alt="application-example"
-        className="w-[95%] md:w-[80%] "
-      />
+      <div className="w-1/2">
+        <img
+          src={appExample}
+          alt="application-example"
+          className="w-full "
+        />
+      </div>
     </section>
   );
 };
