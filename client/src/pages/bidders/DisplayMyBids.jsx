@@ -35,7 +35,7 @@ const DisplayBidsTenders = (props) => {
               {props.tenders.map((tender, index) => (
                 <>
                   <tr
-                    key={index}
+                    key={tender.companyName + index}
                     className="border-b border-gray-200  hover:bg-gray-100"
                   >
                     {tender.bidowner.toString() ===
@@ -68,9 +68,13 @@ const DisplayBidsTenders = (props) => {
                         <td className="py-3 px-2 text-left">
                           <div className="flex items-center">
                             <div className="mr-2"></div>
-                            <span className="font-josefin font-normal">
-                              {tender.goodsDealsWith}
-                            </span>
+                            <a
+                              href={tender.goodsDealsWith}
+                              target="_blank"
+                              className="font-josefin underline"
+                            >
+                              Show Document
+                            </a>
                           </div>
                         </td>
                         <td className="py-3 px-2 text-left">

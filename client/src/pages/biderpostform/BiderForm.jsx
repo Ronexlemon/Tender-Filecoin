@@ -6,21 +6,20 @@ import { useLocation } from "react-router-dom";
 import { SiBitcoincash } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
 import Web3 from "../../web3-storage/web3";
-import { Web3Storage, getFilesFromPath } from 'web3.storage'
+import { Web3Storage, getFilesFromPath } from "web3.storage";
 
 import { providers, Contract } from "ethers";
 
-
 const BiderForm = () => {
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDJFRjRiMTdhYzY1MjgzNEYxQTBkMTQxNTUwOTRlYTdiYTMzRWEyOWIiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzcyMzA1NTE0NTMsIm5hbWUiOiJ0ZW5kZXJzcGFjZSJ9.CwbHkp79KAwCjQTpRmlRJWSWKa10VBSJLLv4eMrmVJs";
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDJFRjRiMTdhYzY1MjgzNEYxQTBkMTQxNTUwOTRlYTdiYTMzRWEyOWIiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzcyMzA1NTE0NTMsIm5hbWUiOiJ0ZW5kZXJzcGFjZSJ9.CwbHkp79KAwCjQTpRmlRJWSWKa10VBSJLLv4eMrmVJs";
   const navigate = useNavigate();
   const { state } = useLocation();
   const location = useLocation();
   const documenturl = location.state?.documenturl;
- 
- 
+
   const { id } = state; // Read values passed on state
-  const ContractBiderAddress = "0x0dDCC4ccA81cF91953a6dcbf8da45C125d39A6bE"; 
+  const ContractBiderAddress = "0x0dDCC4ccA81cF91953a6dcbf8da45C125d39A6bE";
   const Web3ModalRef = useRef();
   const [biderCompanyName, setBiderCompanyName] = useState("");
   const [biderCompanyRegistrationNumber, setBiderCompanyRegistrationNumber] =
@@ -28,6 +27,7 @@ const BiderForm = () => {
   const [biderContact, setBiderContact] = useState("");
   const [_tenderIndex, settenderIndex] = useState("");
   const [bidertypeOfGoods, setTypeOfGoods] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   //provide sgner or provider
   const getProviderOrSigner = async (needSigner = false) => {
@@ -59,7 +59,8 @@ const BiderForm = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
   //btnsubmit to submit the biders tender details
-  const btnsubmit = async () => {
+  const btnsubmit = async (e) => {
+    e.preventDefault();
     const params = [
       _tenderIndex,
       biderCompanyName,
@@ -92,8 +93,7 @@ const BiderForm = () => {
 
   //   const file = files[0];
   //   const storage = new Web3Storage({ token })
-     
-  
+
   //   console.log(`Uploading ${files.length} files`)
   //   const cid = await storage.put(files)
   //   console.log('Content added with CID:', "https://"+cid+".ipfs.w3s.link/"+`${file.name}`)
@@ -103,29 +103,40 @@ const BiderForm = () => {
   //   //   navigate("/BiderForm", { state: { documenturl: linkurl } })
   //   // }
   //   // setUrl(urlfromfilecoin);
-    
+
   // }
   // //Form submit event
   const handleAddTender = async (event) => {
     //prevent page refresh
-    
-    event.preventDefault();
-    const form = event.target;
-    const files = form[3].files;
 
-    if (!files || files.length === 0) {
-      return alert("No files selected");
+    event.preventDefault();
+    try {
+      setIsLoading(true);
+      const form = event.target;
+      const files = form[0].files;
+
+      if (!files || files.length === 0) {
+        return alert("No files selected");
+      }
+
+      const file = files[0];
+      const storage = new Web3Storage({ token });
+
+      console.log(`Uploading ${files.length} files`);
+      const cid = await storage.put(files);
+      console.log(
+        "Content added with CID:",
+        "https://" + cid + ".ipfs.w3s.link/" + `${file.name}`
+      );
+      const linkurl = "https://" + cid + ".ipfs.w3s.link/" + `${file.name}`;
+
+      setTypeOfGoods(linkurl);
+      setIsLoading(false);
+    } catch (err) {
+      setIsLoading(false);
+      console.error(err);
     }
 
-    const file = files[0];
-    const storage = new Web3Storage({ token })
-     
-  
-    console.log(`Uploading ${files.length} files`)
-    const cid = await storage.put(files)
-    console.log('Content added with CID:', "https://"+cid+".ipfs.w3s.link/"+`${file.name}`)
-    const linkurl = "https://"+cid+".ipfs.w3s.link/"+`${file.name}`;
-    setTypeOfGoods(linkurl);
     // console.log("set doc url", bidertypeOfGoods);
 
     // // //creating an object
@@ -143,6 +154,15 @@ const BiderForm = () => {
     // // setTypeOfGoods("");
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    
+    setBiderCompanyName("");
+    setBiderContact("");
+    setBiderCompanyRegistrationNumber("");
+    // setTypeOfGoods("");
+  }
   return (
     <div className="flex">
       <div className="mx-auto w-[95%] my-10">
@@ -165,9 +185,33 @@ const BiderForm = () => {
           </div>
 
           <div className="bg-white w-1/3 shadow-sm my-4 p-10 rounded-md">
+            <div>
+              <form onSubmit={handleAddTender}>
+                <div className="space-y-5">
+                  <label className="font-josefin pb-6">
+                    Upload Company Documents
+                  </label>
+                  <br />
+                  {isLoading ? (
+                    <p className="text-green-500">Uploading...</p>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <input
+                  id="file-upload"
+                  type="file"
+                  name="file"
+                  className="border-2 py-3 pl-3 rounded-md"
+                />
+                <button className="button" type="submit">
+                  Upload file
+                </button>
+              </form>
+            </div>
             <div className="my-6 w-full">
               <form
-                onSubmit={handleAddTender}
+                onSubmit={handleSubmit}
                 className="flex justify-between w-11/12 mx-auto"
               >
                 <div className="space-y-4">
@@ -219,21 +263,6 @@ const BiderForm = () => {
                       value={biderContact}
                     />
                   </div>
-                  <div>
-                    <label className="font-josefin">
-                      Link To Company Documents
-                    </label>
-                    <br />
-                    
-              <label for="file-upload" class="custom-file-upload">
-                Select File
-              </label>
-              <input id="file-upload" type="file" name="file" />
-              <button  className="button" type="submit">
-                Uploa d file
-              </button>
-            
-                  </div>
 
                   <div className="flex justify-between my-4">
                     <button
@@ -252,7 +281,6 @@ const BiderForm = () => {
                     </button>
                   </div>
                 </div>
-                
               </form>
             </div>
           </div>
