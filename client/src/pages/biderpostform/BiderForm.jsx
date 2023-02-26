@@ -19,7 +19,7 @@ const BiderForm = () => {
   const documenturl = location.state?.documenturl;
 
   const { id } = state; // Read values passed on state
-  const ContractBiderAddress = "0x0dDCC4ccA81cF91953a6dcbf8da45C125d39A6bE";
+  const ContractBiderAddress = "0x21ba8e6B05c8020d985777Ab10457cE7C0626fa1";
   const Web3ModalRef = useRef();
   const [biderCompanyName, setBiderCompanyName] = useState("");
   const [biderCompanyRegistrationNumber, setBiderCompanyRegistrationNumber] =
