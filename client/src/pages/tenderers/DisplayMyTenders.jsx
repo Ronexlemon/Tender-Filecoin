@@ -102,7 +102,7 @@ const DisplayMyTenders = (props) => {
                             )}
                           </span>
                         </div>
-                      </td></>: nothavetender ? "":setNotHaveTender(true)}
+                      </td></>: nothavetender ? setNotHaveTender(true):""}
                       
                       
                   </tr>

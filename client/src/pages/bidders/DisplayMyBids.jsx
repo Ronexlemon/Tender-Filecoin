@@ -99,7 +99,7 @@ const DisplayBidsTenders = (props) => {
                           </div>
                         </td></>
                    
-                   :nothavetender ? "":setNotHaveTender(true)}
+                   :nothavetender ? setNotHaveTender(true):""}
                     
                    
                     
