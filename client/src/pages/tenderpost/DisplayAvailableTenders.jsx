@@ -17,7 +17,7 @@ const DisplayTenders = (props) => {
         <div>
           <h1 className=" text-3xl font-extrabold">Listed Tenders</h1>
 
-          <table className="bg-white border border-red-500 w-full table-auto my-10">
+          <table className="bg-white w-full table-auto my-10">
             <thead className="border-b border-gray-200 hover:bg-gray-100">
               <tr className="bg-white text-gray-500 text-sm leading-normal rounded-lg">
                 <th className="py-3 px-6 text-left">Company Name</th>

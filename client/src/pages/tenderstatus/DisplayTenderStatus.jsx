@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
-// string companyName;
-// string contact;
-// string goodsDealsWith;
-// string tenderOwnerName;
-// uint bidsTenderIndex;
-// statuschoices choice;
-// string goodsDescription;
+
 const DisplayTenderStatus = (props) => {
+
+  console.log(props.bids)
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);

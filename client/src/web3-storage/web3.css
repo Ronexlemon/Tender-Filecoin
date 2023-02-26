@@ -23,10 +23,10 @@
     background-color: rgb(66, 162, 206);
   }
   
-  input[type="file"] {
+  /* input[type="file"] {
     display: none;
   }
-  
+   */
   .custom-file-upload {
     padding: 8px 12px;
     cursor: pointer;
