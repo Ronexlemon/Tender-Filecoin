@@ -87,13 +87,13 @@ const authorization = "Basic " + btoa(projectId + ":" + projectSecretKey);
         {  (
           <div className="container">
             <h1>IPFS uploader</h1>
-            <form onSubmit={onSubmitHandler}>
+           <form onSubmit={onSubmitHandler}>
               <label for="file-upload" class="custom-file-upload">
                 Select File
               </label>
               <input id="file-upload" type="file" name="file" />
               <button  className="button" type="submit">
-                Upload file
+                Uploa d file
               </button>
             </form>
           </div>

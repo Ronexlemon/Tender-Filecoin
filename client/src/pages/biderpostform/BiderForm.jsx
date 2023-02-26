@@ -6,11 +6,13 @@ import { useLocation } from "react-router-dom";
 import { SiBitcoincash } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
 import Web3 from "../../web3-storage/web3";
+import { Web3Storage, getFilesFromPath } from 'web3.storage'
 
 import { providers, Contract } from "ethers";
 
 
 const BiderForm = () => {
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDJFRjRiMTdhYzY1MjgzNEYxQTBkMTQxNTUwOTRlYTdiYTMzRWEyOWIiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzcyMzA1NTE0NTMsIm5hbWUiOiJ0ZW5kZXJzcGFjZSJ9.CwbHkp79KAwCjQTpRmlRJWSWKa10VBSJLLv4eMrmVJs";
   const navigate = useNavigate();
   const { state } = useLocation();
   const location = useLocation();
@@ -79,24 +81,66 @@ const BiderForm = () => {
       alert(error);
     }
   };
-  // //Form submit event
-  const handleAddTender = (e) => {
-    //prevent page refresh
-    e.preventDefault();
+  // const onSubmitHandler = async (event) => {
+  //   event.preventDefault();
+  //   const form = event.target;
+  //   const files = form[0].files;
 
-    // //creating an object
-    // let tender={
-    //     companyName,
-    //     description,
-    //     deadline,
-    //     contact,
-    //     email,
-    //     amount
-    // }
-    // setTenders([...tenders, tender]);
-    setBiderCompanyName("");
-    setBiderContact("");
-    setTypeOfGoods("");
+  //   if (!files || files.length === 0) {
+  //     return alert("No files selected");
+  //   }
+
+  //   const file = files[0];
+  //   const storage = new Web3Storage({ token })
+     
+  
+  //   console.log(`Uploading ${files.length} files`)
+  //   const cid = await storage.put(files)
+  //   console.log('Content added with CID:', "https://"+cid+".ipfs.w3s.link/"+`${file.name}`)
+  //   const linkurl = "https://"+cid+".ipfs.w3s.link/"+`${file.name}`;
+  //   setTypeOfGoods(linkurl);
+  //   // if(linkurl != null){
+  //   //   navigate("/BiderForm", { state: { documenturl: linkurl } })
+  //   // }
+  //   // setUrl(urlfromfilecoin);
+    
+  // }
+  // //Form submit event
+  const handleAddTender = async (event) => {
+    //prevent page refresh
+    
+    event.preventDefault();
+    const form = event.target;
+    const files = form[3].files;
+
+    if (!files || files.length === 0) {
+      return alert("No files selected");
+    }
+
+    const file = files[0];
+    const storage = new Web3Storage({ token })
+     
+  
+    console.log(`Uploading ${files.length} files`)
+    const cid = await storage.put(files)
+    console.log('Content added with CID:', "https://"+cid+".ipfs.w3s.link/"+`${file.name}`)
+    const linkurl = "https://"+cid+".ipfs.w3s.link/"+`${file.name}`;
+    setTypeOfGoods(linkurl);
+    // console.log("set doc url", bidertypeOfGoods);
+
+    // // //creating an object
+    // // let tender={
+    // //     companyName,
+    // //     description,
+    // //     deadline,
+    // //     contact,
+    // //     email,
+    // //     amount
+    // // }
+    // // setTenders([...tenders, tender]);
+    // // setBiderCompanyName("");
+    // // setBiderContact("");
+    // // setTypeOfGoods("");
   };
 
   return (
@@ -180,19 +224,15 @@ const BiderForm = () => {
                       Link To Company Documents
                     </label>
                     <br />
-                    <input
-
-                      className="py-3 px-4 border-2 rounded-lg"
-                      type="text"
-                      id="deadline"
-                      name="deadline"
-                      placeholder={documenturl}
-                      required
-                      onChange={(e) => setTypeOfGoods(documenturl)}
-                      value={bidertypeOfGoods}
-                    />
-                    <button onClick={()=>{navigate("/uploadweb3")}}>upload</button>
-                    {console.log("the url is",documenturl)}
+                    
+              <label for="file-upload" class="custom-file-upload">
+                Select File
+              </label>
+              <input id="file-upload" type="file" name="file" />
+              <button  className="button" type="submit">
+                Uploa d file
+              </button>
+            
                   </div>
 
                   <div className="flex justify-between my-4">
